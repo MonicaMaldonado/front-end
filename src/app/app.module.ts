@@ -3,16 +3,32 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ListadoPeliculasComponent } from './peliculas/listado-peliculas/listado-peliculas.component';
+import { ListadoGenericoComponent } from './utilidades/listado-generico/listado-generico.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+import { MaterialModule } from  './material/material.module';
+import { MenuComponent } from './menu/menu.component';
+import { RatingComponent } from './utilidades/rating/rating.component';
+import { CicloDeVidaComponent } from './ciclo-de-vida/ciclo-de-vida.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListadoPeliculasComponent,
+    ListadoGenericoComponent,
+    MenuComponent,
+    RatingComponent,
+    CicloDeVidaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
