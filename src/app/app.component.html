@@ -6,6 +6,7 @@
 
 <div class="contenedor">
 
+  <router-outlet></router-outlet>
   <!-- caso de ciclos de vida componentes
   <div> -->
       <!-- el evento input permite ejecutar una pieza de codigo cada vez que el usuario escriba en el textbox-->
@@ -21,11 +22,7 @@
 
   <!-- <app-rating (rated)="manejarRated($event)" ></app-rating> -->
 
-  <h2>En cines</h2>
-  <app-listado-peliculas [peliculas]="peliculasEnCine"></app-listado-peliculas>
-
-  <h2>Futuros estrenos</h2>
-  <app-listado-peliculas [peliculas]="peliculasProximosEstrenos"></app-listado-peliculas>
+  
  
   
   <!-- ejemplo de vairabe de referencia de plantillas-->
@@ -34,4 +31,6 @@
 
 
 </div>
+
+
 

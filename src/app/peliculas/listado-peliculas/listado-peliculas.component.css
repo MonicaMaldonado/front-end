@@ -25,5 +25,14 @@ image {
 }
 
 button {
-    margin-left: 1rem;
+    margin-left: 1rem   ;
 }
+
+/* .mat-mdc-unelevated-button {
+    background-color: #6200EE;
+}
+
+#btnBorrar
+{
+    background-color: #FFAB40;
+} */

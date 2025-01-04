@@ -7,11 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './listado-peliculas.component.html',
   styleUrl: './listado-peliculas.component.css'
 })
-export class ListadoPeliculasComponent implements OnInit {
+export class ListadoPeliculasComponent  {
 
-  ngOnInit(): void {
-    
-  }
 
   @Input()
   peliculas;

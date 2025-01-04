@@ -1,0 +1,15 @@
+<form (submit)="guardarCambios()" [formGroup]="form"> <!-- asociamos este formulario con el formgroup de la clase del component -->
+    <mat-form-field appearance="outline">
+        <mat-label>Nombre*</mat-label>
+        <input formControlName="nombre" matInput/> <!--formControlName sirve para indicar que campo del formGroup  esta aosciado -->
+        <mat-error *ngIf="form.invalid">{{obtenerErrorCampoNombre()}}</mat-error>
+    </mat-form-field>
+    <div>
+        <button mat-flat-button color="warn" style="color: white;" [disabled]="form.invalid">
+            Guardar Cambios
+        </button>
+        <a mat-stroked-button routerLink="/generos">
+            Cancelar
+        </a>
+    </div>
+ </form>
