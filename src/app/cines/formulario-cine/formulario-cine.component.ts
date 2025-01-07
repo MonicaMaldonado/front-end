@@ -24,6 +24,9 @@ export class FormularioCineComponent implements OnInit {
   @Output()
   guardarCambios : EventEmitter<cineCreacionDTO> = new EventEmitter<cineCreacionDTO>();
 
+  coordenadaInicial : Coordenada[] = [];
+
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nombre: ['', {
@@ -39,6 +42,7 @@ export class FormularioCineComponent implements OnInit {
 
     if (this.modelo !== undefined) {
       this.form.patchValue(this.modelo);
+      this.coordenadaInicial.push({latitud : this.modelo.latitud, longitud: this.modelo.longitud});
     }
   }
 

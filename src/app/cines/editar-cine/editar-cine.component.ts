@@ -11,7 +11,10 @@ import { cineCreacionDTO, cineDTO } from '../cine';
 export class EditarCineComponent {
 
   @Input()
-  modelo : cineDTO = { nombre : "9 de Octubre"};
+  modelo : cineDTO = { nombre : "9 de Octubre",
+                       latitud: -2.1339305069034213,
+                       longitud: -79.90278124809267
+                     };
 
   guardarCambios(cine : cineCreacionDTO) 
   {

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { icon, latLng, LeafletMouseEvent, LeafletMouseEventHandlerFn, marker, Marker, tileLayer } from 'leaflet';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { icon, latLng, LeafletMouseEvent, LeafletMouseEventHandlerFn, marker, Marker, MarkerOptions, tileLayer } from 'leaflet';
 import { marked } from 'marked';
 import { Coordenada } from './coordenada';
 
@@ -10,10 +10,18 @@ import { Coordenada } from './coordenada';
   templateUrl: './mapa.component.html',
   styleUrl: './mapa.component.css'
 })
-export class MapaComponent {
+export class MapaComponent implements OnInit {
+  
+  @Input()
+  coordenadasIniciales : Coordenada[] = [];
 
   @Output()
   coordenadaSeleccionada : EventEmitter<Coordenada> = new EventEmitter<Coordenada>();
+
+  ngOnInit(): void {
+    this.capas = this.coordenadasIniciales.map(valor => marker([valor.latitud, valor.longitud]));
+  }
+
 
   //Conjunto de opciones iniciales para el mapa
   options = {
@@ -26,6 +34,16 @@ export class MapaComponent {
 
   capas: Marker<any>[] = [];
 
+  markerOptions: MarkerOptions = {
+    icon: icon({
+      iconSize: [25, 41],
+      iconAnchor: [13, 41],
+      iconUrl: 'assets/marker-icon.png',
+      iconRetinaUrl: 'assets/marker-icon-2x.png',
+      shadowUrl: 'assets/marker-shadow.png'
+    })
+  }
+
   manejarClick(event : LeafletMouseEvent) {
 
     const latitud = event.latlng.lat;
@@ -33,15 +51,7 @@ export class MapaComponent {
     console.log({latitud, longitud});
 
     this.capas = [];
-    this.capas.push(marker([latitud, longitud], {
-      icon : icon({
-        iconSize: [25, 41],
-        iconAnchor: [13,41],
-        iconUrl: 'marker-icon.png',
-        iconRetinaUrl: 'marker-icon-2x.png',
-        shadowUrl: 'assets/marker-shadow.png'
-      })
-    }));
+    this.capas.push(marker([latitud, longitud], this.markerOptions));
 
     this.coordenadaSeleccionada.emit({latitud : latitud, longitud : longitud});
   }
