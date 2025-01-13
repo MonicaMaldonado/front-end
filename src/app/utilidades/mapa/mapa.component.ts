@@ -19,7 +19,7 @@ export class MapaComponent implements OnInit {
   coordenadaSeleccionada : EventEmitter<Coordenada> = new EventEmitter<Coordenada>();
 
   ngOnInit(): void {
-    this.capas = this.coordenadasIniciales.map(valor => marker([valor.latitud, valor.longitud]));
+    this.capas = this.coordenadasIniciales.map(valor => marker([valor.latitud, valor.longitud], this.markerOptions));
   }
 
 
